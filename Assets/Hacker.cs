@@ -6,7 +6,7 @@ public class Hacker : MonoBehaviour {
     string[] level1Passwords = { "child", "adult", "books", "table", "dates" };
     string[] level2Passwords = { "physics", "chemistry", "biology", "english", "history" };
     string[] level3Passwords = { "continental", "biological", "espionage", "intelligence", "government" };
-    string[] devices = { "library computer.", "local school.", "Pentagon!" };
+    string[] devices = { "library computer.", "local school.", "NORAD!" };
 
     // Game state
     string playerName;
@@ -111,19 +111,74 @@ public class Hacker : MonoBehaviour {
     {
         if (input == password)
             {
-                currentScreen = Screen.Win;
-                Terminal.WriteLine("Congratulations! You've hacked into the" + devices[level-1] );
+                DisplayWinScreen();
             }
         else
             {
                 Terminal.WriteLine("Incorrect password. Try again:");
             }
     }
-        //else
-        //{
-        //    Terminal.WriteLine("The system is broken!");
-        //    print("Level not set to 1, 2, or 3!!!");
-        //    currentScreen = Screen.MainMenu;
-        //}
-    
+
+    void DisplayWinScreen()
+    {
+        currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        ShowLevelReward();
+    }
+
+    void ShowLevelReward()
+    {
+        switch(level)
+        {
+            case 1:
+                Terminal.WriteLine("Congratulations! You've hacked into the" + devices[level - 1]);
+                Terminal.WriteLine("Have a book ...");
+                Terminal.WriteLine(@"
+ _______
+(______(\
+ \      \\
+  \      \\
+   \______\|
+"               );
+                break;
+            case 2:
+                Terminal.WriteLine("Congratulations! You've hacked into the" + devices[level - 1]);
+                Terminal.WriteLine(@"
+    \_/
+  --(_)--  .
+    / \   /_\
+          |Q|
+    .-----' '-----.           __
+   /____[SCHOOL]___\         ()))
+    | [] .-.-. [] |         (((())
+  ..|____|_|_|____|...........)(..."
+                );
+                break;
+            case 3:
+ //               Terminal.WriteLine("Congratulations! You've hacked into " + devices[level - 1]);
+                Terminal.WriteLine(@"     Want to play a game?
+How about Global Thermonuclear War?
+ ,------~~v,                
+ |'         ¯\   ,__/¯||    
+/             \,/     /     
+|                    /      
+\                   |       
+ \                 /        
+  ^¯~_            /         
+      '~~,  ,¯~¯\ \         
+          \/     \/ "
+                );
+                break;
+            default:
+                Debug.LogError("Unknown error - invalid level!");
+                break;
+        }
+    }
+    //else
+    //{
+    //    Terminal.WriteLine("The system is broken!");
+    //    print("Level not set to 1, 2, or 3!!!");
+    //    currentScreen = Screen.MainMenu;
+    //}
+
 }
