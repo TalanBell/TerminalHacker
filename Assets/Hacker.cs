@@ -62,38 +62,23 @@ public class Hacker : MonoBehaviour {
 
     void RunMainMenu(string input)
     {
-        if (input == "1")
+        bool isValidLevelNumber = ( input =="1" || input == "2" || input == "3");
+        if (isValidLevelNumber)
         {
-            level = 1;
-            password = level1Passwords[2]; // TODO make random later
-            device = devices[0];
+            level = int.Parse(input);
             StartGame();
         }
-        else if (input == "2")
-        {
-            level = 2;
-            password = level2Passwords[0]; // TODO make random later
-            device = devices[1];
-            StartGame();
-        }
-        else if (input == "3")
-        {
-            level = 3;
-            password = level3Passwords[0]; // TODO make random later
-            device = devices[2];
-            StartGame();
-        }
-        else if (input == "007")
+        else if (input == "007")  //Easter Egg
         {
             playerName = "Mr Bond";
             ShowMainMenu(playerName);
         }
-        else if (input == "42")
+        else if (input == "42")  //Easter Egg
         {
             playerName = "Arthur Dent";
             Terminal.WriteLine("That's the answer, what's the question?");
         }
-        else if (input == "3.141592")
+        else if (input == "3.141592")  //Easter Egg
         {
             Terminal.WriteLine("I do like a slice of Pi.");
         }
@@ -106,7 +91,22 @@ public class Hacker : MonoBehaviour {
     void StartGame()
     {
         currentScreen = Screen.Password;
-        Terminal.WriteLine("You have chosen level " + level);
+        Terminal.ClearScreen();
+        switch(level)
+        {
+            case 1:
+                password = level1Passwords[2];
+                break;
+            case 2:
+                password = level2Passwords[0];
+                break;
+            case 3:
+                password = level3Passwords[0];
+                break;
+            default:
+                Debug.LogError("Unknown error - invalid level!");
+                break;
+        }
         Terminal.WriteLine("Please enter your password:");
     }
 
@@ -115,7 +115,7 @@ public class Hacker : MonoBehaviour {
         if (input == password)
             {
                 currentScreen = Screen.Win;
-                Terminal.WriteLine("Congratulations! You've hacked into the" + device );
+                Terminal.WriteLine("Congratulations! You've hacked into the" + devices[level-1] );
             }
         else
             {
