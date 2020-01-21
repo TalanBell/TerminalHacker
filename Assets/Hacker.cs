@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
@@ -17,7 +14,6 @@ public class Hacker : MonoBehaviour {
     enum Screen { MainMenu, Password, Win };
     Screen currentScreen;
     string password;
-    string device;
 
 	// Use this for initialization
 	void Start ()
@@ -37,6 +33,7 @@ public class Hacker : MonoBehaviour {
         Terminal.WriteLine("Press 1 for the local library");
         Terminal.WriteLine("Press 2 for your local school");
         Terminal.WriteLine("Press 3 try to hack into the Pentagon");
+        Terminal.WriteLine("Enter 'menu' at any time to return here");
         Terminal.WriteLine("Enter your selection:");
     }
 
@@ -95,13 +92,13 @@ public class Hacker : MonoBehaviour {
         switch(level)
         {
             case 1:
-                password = level1Passwords[2];
+                password = level1Passwords[Random.Range(0, level1Passwords.Length)];
                 break;
             case 2:
-                password = level2Passwords[0];
+                password = level2Passwords[Random.Range(0, level2Passwords.Length)];
                 break;
             case 3:
-                password = level3Passwords[0];
+                password = level3Passwords[Random.Range(0, level3Passwords.Length)];
                 break;
             default:
                 Debug.LogError("Unknown error - invalid level!");
