@@ -4,12 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Hacker : MonoBehaviour {
-    
+
+    // Game configuration data
+    string[] level1Passwords = { "child", "adult", "books", "table", "dates" };
+    string[] level2Passwords = { "physics", "chemistry", "biology", "english", "history" };
+    string[] level3Passwords = { "continental", "biological", "espionage", "intelligence", "government" };
+    string[] devices = { "library computer.", "local school.", "Pentagon!" };
+
     // Game state
     string playerName;
     int level;
     enum Screen { MainMenu, Password, Win };
     Screen currentScreen;
+    string password;
+    string device;
 
 	// Use this for initialization
 	void Start ()
@@ -57,11 +65,22 @@ public class Hacker : MonoBehaviour {
         if (input == "1")
         {
             level = 1;
+            password = level1Passwords[2]; // TODO make random later
+            device = devices[0];
             StartGame();
         }
         else if (input == "2")
         {
             level = 2;
+            password = level2Passwords[0]; // TODO make random later
+            device = devices[1];
+            StartGame();
+        }
+        else if (input == "3")
+        {
+            level = 3;
+            password = level3Passwords[0]; // TODO make random later
+            device = devices[2];
             StartGame();
         }
         else if (input == "007")
@@ -93,35 +112,21 @@ public class Hacker : MonoBehaviour {
 
     void TestPassword(string input)
     {
-        if (level == 1)
-        {
-            if (input == "books")
+        if (input == password)
             {
                 currentScreen = Screen.Win;
-                Terminal.WriteLine("Congratulations! You're into the libary computer.");
+                Terminal.WriteLine("Congratulations! You've hacked into the" + device );
             }
-            else
-            {
-                Terminal.WriteLine("Incorrect password. Try again:");
-            }
-        }
-        else if (level == 2)
-        {
-            if (input == "physics")
-            {
-                currentScreen = Screen.Win;
-                Terminal.WriteLine("Congratulations! You're into the school computer.");
-            }
-            else
-            {
-                Terminal.WriteLine("Incorrect password. Try again:");
-            }
-        }
         else
-        {
-            Terminal.WriteLine("The system is broken!");
-            print("Level not set to 1, 2, or 3!!!");
-            currentScreen = Screen.MainMenu;
-        }
+            {
+                Terminal.WriteLine("Incorrect password. Try again:");
+            }
     }
+        //else
+        //{
+        //    Terminal.WriteLine("The system is broken!");
+        //    print("Level not set to 1, 2, or 3!!!");
+        //    currentScreen = Screen.MainMenu;
+        //}
+    
 }
