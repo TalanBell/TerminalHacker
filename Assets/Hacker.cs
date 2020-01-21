@@ -42,7 +42,14 @@ public class Hacker : MonoBehaviour {
         {
             RunMainMenu(input);
         }
-
+         else if (currentScreen == Screen.Password)
+        {
+            TestPassword(input);
+        }
+        else if (currentScreen == Screen.Win)
+        {
+            Terminal.WriteLine("Please type 'menu' for Main Menu:");
+        }
     }
 
     void RunMainMenu(string input)
@@ -65,7 +72,7 @@ public class Hacker : MonoBehaviour {
         else if (input == "42")
         {
             playerName = "Arthur Dent";
-            Terminal.WriteLine("That's the answer, but what's the question?");
+            Terminal.WriteLine("That's the answer, what's the question?");
         }
         else if (input == "3.141592")
         {
@@ -82,5 +89,39 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Password;
         Terminal.WriteLine("You have chosen level " + level);
         Terminal.WriteLine("Please enter your password:");
+    }
+
+    void TestPassword(string input)
+    {
+        if (level == 1)
+        {
+            if (input == "books")
+            {
+                currentScreen = Screen.Win;
+                Terminal.WriteLine("Congratulations! You're into the libary computer.");
+            }
+            else
+            {
+                Terminal.WriteLine("Incorrect password. Try again:");
+            }
+        }
+        else if (level == 2)
+        {
+            if (input == "physics")
+            {
+                currentScreen = Screen.Win;
+                Terminal.WriteLine("Congratulations! You're into the school computer.");
+            }
+            else
+            {
+                Terminal.WriteLine("Incorrect password. Try again:");
+            }
+        }
+        else
+        {
+            Terminal.WriteLine("The system is broken!");
+            print("Level not set to 1, 2, or 3!!!");
+            currentScreen = Screen.MainMenu;
+        }
     }
 }
