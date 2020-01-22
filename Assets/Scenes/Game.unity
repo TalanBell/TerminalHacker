@@ -245,6 +245,31 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114605418127070900, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: keyStrokeSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cc3a01637d47b64438910728b6fb6fed, type: 3}
+    - target: {fileID: 114605418127070900, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: keyStrokeSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e761763480b09d4bad0e18d22ab7ed2, type: 3}
+    - target: {fileID: 114605418127070900, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: keyStrokeSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b7e14641be3a6546b7c1930a2f19a93, type: 3}
+    - target: {fileID: 114605418127070900, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: keyStrokeSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: a7ef82362aa81324f8fe23d9b3c3340c, type: 3}
+    - target: {fileID: 114605418127070900, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: keyStrokeSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5e93c06ebae48134cb25070948e4f34b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c46548f7b668a78409fa399c095e4e6b, type: 2}
   m_IsPrefabAsset: 0
