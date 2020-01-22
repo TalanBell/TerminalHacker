@@ -3,6 +3,7 @@
 public class Hacker : MonoBehaviour {
 
     // Game configuration data
+    const string menuHint = "You may type menu at any time.";
     string[] level1Passwords = { "child", "adult", "books", "table", "dates" };
     string[] level2Passwords = { "physics", "chemistry", "biology", "english", "history" };
     string[] level3Passwords = { "continental", "biological", "espionage", "intelligence", "government" };
@@ -15,8 +16,8 @@ public class Hacker : MonoBehaviour {
     Screen currentScreen;
     string password;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         playerName = "Berris Fueller";
         ShowMainMenu(playerName);
@@ -33,27 +34,26 @@ public class Hacker : MonoBehaviour {
         Terminal.WriteLine("Press 1 for the local library");
         Terminal.WriteLine("Press 2 for your local school");
         Terminal.WriteLine("Press 3 try to hack into the Pentagon");
-        Terminal.WriteLine("Enter 'menu' at any time to return here");
         Terminal.WriteLine("Enter your selection:");
     }
 
     void OnUserInput(string input)
     {
-         if (input == "menu") // We can always go direct to main menu
+        if (input == "menu") // We can always go direct to main menu
         {
             ShowMainMenu(playerName);
         } 
-         else if (currentScreen == Screen.MainMenu)
+        else if (currentScreen == Screen.MainMenu)
         {
             RunMainMenu(input);
         }
-         else if (currentScreen == Screen.Password)
+        else if (currentScreen == Screen.Password)
         {
             TestPassword(input);
         }
         else if (currentScreen == Screen.Win)
         {
-            Terminal.WriteLine("Please type 'menu' for Main Menu:");
+            Terminal.WriteLine(menuHint);
         }
     }
 
@@ -63,7 +63,7 @@ public class Hacker : MonoBehaviour {
         if (isValidLevelNumber)
         {
             level = int.Parse(input);
-            StartGame();
+            AskForPassword();
         }
         else if (input == "007")  //Easter Egg
         {
@@ -82,14 +82,22 @@ public class Hacker : MonoBehaviour {
         else
         {
             Terminal.WriteLine("Please enter a valid level.");
+            Terminal.WriteLine(menuHint);
         }
     }
 
-    void StartGame()
+    void AskForPassword()
     {
         currentScreen = Screen.Password;
         Terminal.ClearScreen();
-        switch(level)
+        SetRandomPassword();
+        Terminal.WriteLine("Enter your password, hint: " + password.Anagram());
+        Terminal.WriteLine(menuHint);
+    }
+
+    void SetRandomPassword()
+    {
+        switch (level)
         {
             case 1:
                 password = level1Passwords[Random.Range(0, level1Passwords.Length)];
@@ -104,7 +112,6 @@ public class Hacker : MonoBehaviour {
                 Debug.LogError("Unknown error - invalid level!");
                 break;
         }
-        Terminal.WriteLine("Please enter your password:");
     }
 
     void TestPassword(string input)
@@ -115,7 +122,7 @@ public class Hacker : MonoBehaviour {
             }
         else
             {
-                Terminal.WriteLine("Incorrect password. Try again:");
+                AskForPassword();
             }
     }
 
@@ -155,18 +162,17 @@ public class Hacker : MonoBehaviour {
                 );
                 break;
             case 3:
- //               Terminal.WriteLine("Congratulations! You've hacked into " + devices[level - 1]);
-                Terminal.WriteLine(@"     Want to play a game?
-How about Global Thermonuclear War?
- ,------~~v,                
- |'         ¯\   ,__/¯||    
-/             \,/     /     
-|                    /      
-\                   |       
- \                 /        
-  ^¯~_            /         
-      '~~,  ,¯~¯\ \         
-          \/     \/ "
+                //               Terminal.WriteLine("Congratulations! You've hacked into " + devices[level - 1]);
+                Terminal.WriteLine("Welcome to NORAD. Want to play a game?");
+                Terminal.WriteLine(@"How about Global Thermonuclear War?
+
+
+  /\     |\**/|      
+ /  \    \ == /
+ |  |     |  |
+ |  |     |  |
+/ == \    \  /
+|/**\|     \/ "
                 );
                 break;
             default:
