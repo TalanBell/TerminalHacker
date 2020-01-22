@@ -87,6 +87,15 @@ public class Hacker : MonoBehaviour
             Terminal.WriteLine("Can you explain the removal of your");
             Terminal.WriteLine("useraccount on June 23rd, 1973?");
         }
+        else if (input == "2b")  //Easter Egg
+        {
+            playerName = "Hamlet";
+            Terminal.WriteLine("... or not 2B, that is the question...");
+        }
+        else if (input == "easter" || input == "easteregg" || input == "eastereggs")
+        {
+            Terminal.WriteLine("007, 42, 3.141592, 2b, ...");
+        }
         else
         {
             Terminal.WriteLine("Please enter a valid level.");

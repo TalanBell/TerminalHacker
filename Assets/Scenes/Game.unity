@@ -270,6 +270,16 @@ Prefab:
       propertyPath: keyStrokeSounds.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 5e93c06ebae48134cb25070948e4f34b, type: 3}
+    - target: {fileID: 82324631433226160, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e8092f6294c3414791f5dd77260f0fd, type: 3}
+    - target: {fileID: 82324631433226160, guid: c46548f7b668a78409fa399c095e4e6b,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c46548f7b668a78409fa399c095e4e6b, type: 2}
   m_IsPrefabAsset: 0
