@@ -66,6 +66,11 @@ public class Hacker : MonoBehaviour
             level = int.Parse(input);
             AskForPassword();
         }
+        else if (input == "quit" || input == "exit" || input == "exit")
+        {
+            Terminal.WriteLine("If on the web, close the browser tab.");
+            Application.Quit();
+        }
         else if (input == "007")  //Easter Egg
         {
             playerName = "Mr Bond";
